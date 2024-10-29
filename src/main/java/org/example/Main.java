@@ -6,14 +6,41 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Technical programming books manager");
-        System.out.println("1. Add book");
-        System.out.println("2. Look at all books");
-        System.out.println("3. Delete Book");
-        System.out.println("4. Change Repository");
-        System.out.println("5. Exit");
-        System.out.println("Choose an option:");
+        String[] menu = {
+                "1. Add book",
+                "2. View all books",
+                "3. Delete book",
+                "4. Change repository",
+                "5. Exit",
+        };
 
-        int chooseMenu = scanner.nextInt();
+        byte option = 0;
+
+        while (option != 5) {
+            for (String item : menu) {
+                System.out.println(item);
+            }
+
+            System.out.print("Select an option: ");
+
+            // Wait for user input
+            String input = scanner.nextLine(); //TODO check that it is a number
+
+            try {
+                // Guard: Is this really a byte?
+                option = Byte.parseByte(input);
+            } catch (Exception ex) {
+                System.out.println("This is not a valid number.");
+                continue;
+            }
+
+            if (option < 1 || option > 5) {
+                // Is this option within the menu choices?
+                System.out.println("That option does not exist in the menu.");
+                continue;
+            }
+            System.out.println("The chosen option is: " + menu[option - 1]);
+        }
+        scanner.close();
     }
 }
