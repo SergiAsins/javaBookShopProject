@@ -23,10 +23,9 @@ public class Application {
         String chooseOption = "";
 
         do {
-            // Mostrar menú al inicio y después de cada opción
             System.out.println(menu);
             System.out.println("Choose an option: ");
-            chooseOption = scanner.next(); // Pedir opción al usuario
+            chooseOption = scanner.next();
 
             switch (chooseOption) {
                 case "1":
@@ -41,7 +40,6 @@ public class Application {
                             System.out.println(book.toString());
                         }
                     }
-                    // Pausa de 10 segundos antes de mostrar el menú de nuevo
                     try {
                         Thread.sleep(10000);
                     } catch (InterruptedException e) {
@@ -62,6 +60,6 @@ public class Application {
                     break;
             }
 
-        } while (!chooseOption.equals("5")); // Salir si la opción es "5"
+        } while (!chooseOption.equals("5"));
     }
 }
