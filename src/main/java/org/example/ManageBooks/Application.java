@@ -30,6 +30,9 @@ public class Application {
             switch (chooseOption) {
                 case "1":
                     System.out.println("Option 1: Add book");
+                    System.out.println("Add Title:");
+                    Scanner addTitle = new Scanner(System.in);
+
                     break;
                 case "2":
                     System.out.println("Option 2: View all books");
@@ -39,11 +42,6 @@ public class Application {
                         for (Book book : arrayBooks) {
                             System.out.println(book.toString());
                         }
-                    }
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
                     }
                     break;
                 case "3":
@@ -58,6 +56,11 @@ public class Application {
                 default:
                     System.out.println("Invalid option. Please try again.");
                     break;
+            }
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
         } while (!chooseOption.equals("5"));
