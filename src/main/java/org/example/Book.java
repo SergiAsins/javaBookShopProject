@@ -1,12 +1,12 @@
 package org.example;
 
 public class Book {
-    private String id;
+    private String ISBN;
     private String title;
     private String author;
 
-    public Book(String id, String title, String author) {
-        this.id = id;
+    public Book(String ISBN, String title, String author) {
+        this.ISBN = ISBN;
         this.title = title;
         this.author = author;
     }
@@ -14,7 +14,7 @@ public class Book {
     @Override
     public String toString() {
         return
-                "id ='" + this.id + '\'' +
+                "ISBN ='" + this.ISBN + '\'' +
                 ",\t title ='" + this.title + '\'' +
                 ",\t author ='" + this.author + '\'';
     }

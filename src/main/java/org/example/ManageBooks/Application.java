@@ -18,10 +18,10 @@ public class Application {
 
         String menu =
                 "1. Add book\n" +
-                "2. View all books\n" +
-                "3. Delete book\n" +
-                "4. Change repository\n" +
-                "5. Exit";
+                        "2. View all books\n" +
+                        "3. Delete book\n" +
+                        "4. Change repository\n" +
+                        "5. Exit";
         ;
 
         String chooseOption = "";
@@ -34,12 +34,19 @@ public class Application {
                     break;
                 case "2":
                     System.out.println("Option 2: View all books");
-                    if (arrayBooks.length == 0){
+                    if (arrayBooks.length == 0) {
                         System.out.println("There are not books in the repository");
-                    }else{
+                    } else {
                         for (Book book : arrayBooks) {
                             System.out.println(book.toString());
                         }
+
+                    }
+                    try {
+                        Thread.sleep(10000);
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                     break;
                 case "3":
@@ -56,6 +63,6 @@ public class Application {
             System.out.println("Choose an option: ");
             chooseOption = scanner.next();
 
-        }while(chooseOption != "5");
+        } while (chooseOption != "5");
     }
 }
