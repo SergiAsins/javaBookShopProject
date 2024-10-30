@@ -5,7 +5,7 @@ import org.example.Book;
 import java.util.Scanner;
 
 public class Application {
-    public static void printMenu() {
+    public void printMenu() {
 
         Book book1 = new Book("1", "Harry Potter", "J.K.Rowling");
         Book book2 = new Book("2", "The Road", "Cormac McDonald");
