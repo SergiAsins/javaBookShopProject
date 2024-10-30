@@ -4,6 +4,16 @@ import org.example.Book;
 import java.util.Scanner;
 
 public class Application {
+    /* public void addNewBook()
+    {
+        System.out.println("Option 1: Add book");
+        System.out.println("Add Title:");
+        Scanner addTitle = new Scanner(System.in);
+        System.out.println("Add Author:");
+        Scanner addAuthor = new Scanner(System.in);
+        System.out.println("Add ISBN:");
+        Scanner addISBN = new Scanner(System.in);
+    } */
     public void printMenu() {
 
         Book book1 = new Book("1", "Harry Potter", "J.K.Rowling");
@@ -31,8 +41,16 @@ public class Application {
                 case "1":
                     System.out.println("Option 1: Add book");
                     System.out.println("Add Title:");
-                    Scanner addTitle = new Scanner(System.in);
-
+                    Scanner scanTitle = new Scanner(System.in);
+                    String addTitle = scanTitle.next();
+                    System.out.println("Add Author:");
+                    Scanner scanAuthor = new Scanner(System.in);
+                    String addAuthor = scanAuthor.next();
+                    System.out.println("Add ISBN:");
+                    Scanner scanISBN = new Scanner(System.in);
+                    String addISBN = scanISBN.next();
+                    Book book = new Book(addTitle,  addAuthor, addISBN);
+                    //arrayBooks.add(book);
                     break;
                 case "2":
                     System.out.println("Option 2: View all books");
@@ -41,6 +59,11 @@ public class Application {
                     } else {
                         for (Book book : arrayBooks) {
                             System.out.println(book.toString());
+                        }
+                        try {
+                            Thread.sleep(10000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
                     }
                     break;
@@ -57,12 +80,6 @@ public class Application {
                     System.out.println("Invalid option. Please try again.");
                     break;
             }
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
         } while (!chooseOption.equals("5"));
     }
 }
