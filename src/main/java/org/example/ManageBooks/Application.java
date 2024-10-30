@@ -34,8 +34,12 @@ public class Application {
                     break;
                 case "2":
                     System.out.println("Option 2: View all books");
-                    for(Book book: arrayBooks){
-                        System.out.println(book.toString());
+                    if (arrayBooks.length == 0){
+                        System.out.println("There are not books in the repository");
+                    }else{
+                        for (Book book : arrayBooks) {
+                            System.out.println(book.toString());
+                        }
                     }
                     break;
                 case "3":
