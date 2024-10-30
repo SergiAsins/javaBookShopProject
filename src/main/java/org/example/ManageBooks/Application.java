@@ -35,7 +35,7 @@ public class Application {
                 case "2":
                     System.out.println("Option 2: View all books");
                     for(Book book: arrayBooks){
-                        book.toString();
+                        System.out.println(book.toString());
                     }
                     break;
                 case "3":
@@ -49,6 +49,7 @@ public class Application {
                     break;
             }
 
+            System.out.println("Choose an option: ");
             chooseOption = scanner.next();
 
         }while(chooseOption != "5");
