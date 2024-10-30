@@ -1,7 +1,6 @@
 package org.example.ManageBooks;
 
 import org.example.Book;
-
 import java.util.Scanner;
 
 public class Application {
@@ -12,9 +11,7 @@ public class Application {
         Book book3 = new Book("3", "The Lord of the Rings I", "J.R.R Tolkien");
 
         Book[] arrayBooks = {book1, book2, book3};
-
         Scanner scanner = new Scanner(System.in);
-        byte option = 0;
 
         String menu =
                 "1. Add book\n" +
@@ -22,11 +19,14 @@ public class Application {
                         "3. Delete book\n" +
                         "4. Change repository\n" +
                         "5. Exit";
-        ;
 
         String chooseOption = "";
+
         do {
+            // Mostrar menú al inicio y después de cada opción
             System.out.println(menu);
+            System.out.println("Choose an option: ");
+            chooseOption = scanner.next(); // Pedir opción al usuario
 
             switch (chooseOption) {
                 case "1":
@@ -35,17 +35,16 @@ public class Application {
                 case "2":
                     System.out.println("Option 2: View all books");
                     if (arrayBooks.length == 0) {
-                        System.out.println("There are not books in the repository");
+                        System.out.println("There are no books in the repository.");
                     } else {
                         for (Book book : arrayBooks) {
                             System.out.println(book.toString());
                         }
-
                     }
+                    // Pausa de 10 segundos antes de mostrar el menú de nuevo
                     try {
                         Thread.sleep(10000);
-                    }
-                    catch (InterruptedException e) {
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -56,13 +55,13 @@ public class Application {
                     System.out.println("Option 4: Change Repository");
                     break;
                 case "5":
-                    System.out.println("Option 5: Exit");
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
                     break;
             }
 
-            System.out.println("Choose an option: ");
-            chooseOption = scanner.next();
-
-        } while (chooseOption != "5");
+        } while (!chooseOption.equals("5")); // Salir si la opción es "5"
     }
 }
