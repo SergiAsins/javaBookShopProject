@@ -2,12 +2,13 @@ package org.example;
 
 public class Book {
     public String id;
-    public String titulo;
-    public String autor;
+    public String title;
+    public String author;
 
-    public void Book(id,titulo,autor){
+    public Book(String id, String title, String author) {
         this.id = id;
-        this.titulo = titulo;
-        this.autor = autor;
+        this.title = title;
+        this.author = author;
     }
+
 }
