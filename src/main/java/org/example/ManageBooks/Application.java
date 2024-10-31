@@ -1,11 +1,18 @@
 package org.example.ManageBooks;
 
 import org.example.Book;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Application {
-    /* public void addNewBook()
+    
+    private ArrayList<Book> bookList = new ArrayList<>();
+    
+    public Application(){
+        this.bookList.add(new Book("5","robin hood","tom cruise"));
+    }
+
     {
         System.out.println("Option 1: Add book");
         System.out.println("Add Title:");
@@ -14,14 +21,17 @@ public class Application {
         Scanner addAuthor = new Scanner(System.in);
         System.out.println("Add ISBN:");
         Scanner addISBN = new Scanner(System.in);
-    } */
+    }
     public void printMenu() {
-
+/*
         Book book1 = new Book("1", "Harry Potter", "J.K.Rowling");
         Book book2 = new Book("2", "The Road", "Cormac McDonald");
         Book book3 = new Book("3", "The Lord of the Rings I", "J.R.R Tolkien");
 
-        Book[] arrayBooks = {book1, book2, book3};
+       Book[] arrayBooks = {book1, book2, book3};*/
+        
+        
+        
         Scanner scanner = new Scanner(System.in);
 
         String menu =
@@ -50,16 +60,16 @@ public class Application {
                     System.out.println("Add ISBN:");
                     Scanner scanISBN = new Scanner(System.in);
                     String addISBN = scanISBN.next();
-                    Book book = new Book(addTitle,  addAuthor, addISBN);
-                    //arrayBooks.add(book);
+                    Book book = new Book(addTitle, addAuthor, addISBN);
+                    bookList.add(new Book(addTitle,addAuthor,addISBN));
                     break;
                 case "2":
                     System.out.println("Option 2: View all books");
-                    if (arrayBooks.length == 0) {
+                    if (bookList.size()== 0) {
                         System.out.println("There are no books in the repository.");
                     } else {
-                        for (Book book : arrayBooks) {
-                            System.out.println(book.toString());
+                        for (Book books : bookList) {
+                            System.out.println(books.toString());
                         }
                         try {
                             Thread.sleep(10000);
