@@ -13,25 +13,9 @@ public class Application {
         this.bookList.add(new Book("5","robin hood","tom cruise"));
     }
 
-    {
-        System.out.println("Option 1: Add book");
-        System.out.println("Add Title:");
-        Scanner addTitle = new Scanner(System.in);
-        System.out.println("Add Author:");
-        Scanner addAuthor = new Scanner(System.in);
-        System.out.println("Add ISBN:");
-        Scanner addISBN = new Scanner(System.in);
-    }
-    public void printMenu() {
-/*
-        Book book1 = new Book("1", "Harry Potter", "J.K.Rowling");
-        Book book2 = new Book("2", "The Road", "Cormac McDonald");
-        Book book3 = new Book("3", "The Lord of the Rings I", "J.R.R Tolkien");
 
-       Book[] arrayBooks = {book1, book2, book3};*/
-        
-        
-        
+    public void printMenu() {
+
         Scanner scanner = new Scanner(System.in);
 
         String menu =
@@ -50,19 +34,22 @@ public class Application {
 
             switch (chooseOption) {
                 case "1":
-                    System.out.println("Option 1: Add book");
-                    System.out.println("Add Title:");
-                    Scanner scanTitle = new Scanner(System.in);
-                    String addTitle = scanTitle.next();
-                    System.out.println("Add Author:");
-                    Scanner scanAuthor = new Scanner(System.in);
-                    String addAuthor = scanAuthor.next();
-                    System.out.println("Add ISBN:");
-                    Scanner scanISBN = new Scanner(System.in);
-                    String addISBN = scanISBN.next();
-                    Book book = new Book(addTitle, addAuthor, addISBN);
-                    bookList.add(new Book(addTitle,addAuthor,addISBN));
-                    break;
+                        System.out.println("Option 1: Add book");
+                        System.out.println("Add Title:");
+                        Scanner scanTitle = new Scanner(System.in);
+                        String addTitle = scanTitle.next();
+                        System.out.println("Add Author:");
+                        Scanner scanAuthor = new Scanner(System.in);
+                        String addAuthor = scanAuthor.next();
+                        System.out.println("Add ISBN:");
+                        Scanner scanISBN = new Scanner(System.in);
+                        String addISBN = scanISBN.next();
+                        Book book = new Book(addTitle, addAuthor, addISBN);
+                        bookList.add(new Book(addTitle, addAuthor, addISBN));
+                        System.out.println("The book has been added correctly!");
+                        System.out.println("----------------------------------------");
+                        break;
+
                 case "2":
                     System.out.println("Option 2: View all books");
                     if (bookList.size()== 0) {
