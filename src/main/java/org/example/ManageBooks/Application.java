@@ -6,25 +6,19 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Application {
-    
     private ArrayList<Book> bookList = new ArrayList<>();
-    
     public Application(){
         this.bookList.add(new Book("5","robin hood","tom cruise"));
     }
 
-
     public void printMenu() {
-
         Scanner scanner = new Scanner(System.in);
-
         String menu =
                 "1. Add book\n" +
                         "2. View all books\n" +
                         "3. Delete book\n" +
                         "4. Change repository\n" +
                         "5. Exit";
-
         String chooseOption = "";
 
         do {
@@ -34,23 +28,31 @@ public class Application {
 
             switch (chooseOption) {
                 case "1":
-                        System.out.println("Option 1: Add book");
-                        System.out.println("Add Title:");
-                        Scanner scanTitle = new Scanner(System.in);
-                        String addTitle = scanTitle.next();
-                        System.out.println("Add Author:");
-                        Scanner scanAuthor = new Scanner(System.in);
-                        String addAuthor = scanAuthor.next();
-                        System.out.println("Add ISBN:");
-                        Scanner scanISBN = new Scanner(System.in);
-                        String addISBN = scanISBN.next();
-                        Book book = new Book(addTitle, addAuthor, addISBN);
-                        bookList.add(new Book(addTitle, addAuthor, addISBN));
-                        System.out.println("----------------------------------------");
-                        System.out.println("The book has been added correctly!");
-                        System.out.println("----------------------------------------");
-                        break;
-
+                    System.out.println("Option 1: Add book");
+                    String addTitle, addAuthor, addISBN;
+                    // Loop that makes mandatory all fields
+                    do {
+                        System.out.print("Add Title (required): ");
+                        addTitle = scanner.nextLine().trim();
+                        System.out.print("Add Author (required): ");
+                        addAuthor = scanner.nextLine().trim();
+                        System.out.print("Add ISBN (required): ");
+                        addISBN = scanner.nextLine().trim();
+                        // Verifies that no field is empty
+                        if (addTitle.isEmpty() || addAuthor.isEmpty() || addISBN.isEmpty()) {
+                            System.out.println("----------------------------------------");
+                            System.out.println("All fields are mandatory. Please, try again.");
+                            System.out.println("----------------------------------------");
+                        } else {
+                            break;
+                        }
+                    } while (true);
+                    Book book = new Book(addTitle, addAuthor, addISBN);
+                    bookList.add(book);
+                    System.out.println("----------------------------------------");
+                    System.out.println("The book has been added correctly!");
+                    System.out.println("----------------------------------------");
+                    break;
                 case "2":
                     System.out.println("Option 2: View all books");
                     if (bookList.size()== 0) {
