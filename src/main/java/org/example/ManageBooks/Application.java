@@ -46,6 +46,7 @@ public class Application {
                         String addISBN = scanISBN.next();
                         Book book = new Book(addTitle, addAuthor, addISBN);
                         bookList.add(new Book(addTitle, addAuthor, addISBN));
+                        System.out.println("----------------------------------------");
                         System.out.println("The book has been added correctly!");
                         System.out.println("----------------------------------------");
                         break;
