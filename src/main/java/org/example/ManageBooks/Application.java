@@ -38,21 +38,35 @@ public class Application {
                         addAuthor = scanner.nextLine().trim();
                         System.out.print("Add ISBN (required): ");
                         addISBN = scanner.nextLine().trim();
-                        // Verifies that no field is empty
+                        // Can not save a Book with an ISBN that already exists
                         if (addTitle.isEmpty() || addAuthor.isEmpty() || addISBN.isEmpty()) {
                             System.out.println("----------------------------------------");
                             System.out.println("All fields are mandatory. Please, try again.");
                             System.out.println("----------------------------------------");
-                        } else {
                             break;
+                        }else{
+                        for (int i = 0; i < bookList.size(); i++) {
+                            if(addISBN.equals(bookList.get(i).getISBN()) ){
+                                System.out.println("----------------------------------------");
+                                System.out.println("This ISBN already exists. Please, try again");
+                                System.out.println("----------------------------------------");
+                                break;
+                             } else{
+                                Book book = new Book(addTitle, addAuthor, addISBN);
+                                bookList.add(book);
+                                System.out.println("----------------------------------------");
+                                System.out.println("The book has been added correctly!");
+                                System.out.println("----------------------------------------");;
+                            }
+                        }
                         }
                     } while (true);
-                    Book book = new Book(addTitle, addAuthor, addISBN);
+                    /*Book book = new Book(addTitle, addAuthor, addISBN);
                     bookList.add(book);
                     System.out.println("----------------------------------------");
                     System.out.println("The book has been added correctly!");
                     System.out.println("----------------------------------------");
-                    break;
+                    break;*/
                 case "2":
                     System.out.println("Option 2: View all books");
                     if (bookList.size()== 0) {
