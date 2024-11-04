@@ -5,17 +5,17 @@ public class Book {
     private String title;
     private String author;
 
-    public Book(String ISBN, String title, String author) {
-        this.ISBN = ISBN;
+    public Book(String title, String author, String ISBN) {
         this.title = title;
         this.author = author;
+        this.ISBN = ISBN;
     }
 
     @Override
     public String toString() {
         return
-                "ISBN ='" + this.ISBN + '\'' +
-                ",\t title ='" + this.title + '\'' +
-                ",\t author ='" + this.author + '\'';
+                "Title ='" + this.title + '\'' +
+                ",\t author ='" + this.author + '\'' +
+                ",\t ISBN ='" + this.ISBN + '\'';
     }
 }

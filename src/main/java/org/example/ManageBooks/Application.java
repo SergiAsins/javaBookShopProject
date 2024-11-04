@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Application {
     private ArrayList<Book> bookList = new ArrayList<>();
     public Application(){
-        this.bookList.add(new Book("5","robin hood","tom cruise"));
+        this.bookList.add(new Book("robin hood","tom cruise","1"));
     }
 
     public void printMenu() {
@@ -24,7 +24,7 @@ public class Application {
         do {
             System.out.println(menu);
             System.out.println("Choose an option: ");
-            chooseOption = scanner.next();
+            chooseOption = scanner.nextLine();
 
             switch (chooseOption) {
                 case "1":
