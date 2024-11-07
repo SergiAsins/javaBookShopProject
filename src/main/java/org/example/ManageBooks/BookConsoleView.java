@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class BookConsoleView {
     //bookManager manage the logic of books (services)
     private final BookManager bookManager;
-    //scanner read the user's inputs¿?
 
     //bookManager property's constructor
     public BookConsoleView(BookManager bookManager) {
