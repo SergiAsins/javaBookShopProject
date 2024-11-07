@@ -57,6 +57,7 @@ public class Application {
                                 System.out.println("----------------------------------------");
                                 System.out.println("The book has been added correctly!");
                                 System.out.println("----------------------------------------");;
+                                break;
                             }
                         }
                         }
