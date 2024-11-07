@@ -8,11 +8,9 @@ public class Application {
     private final ArrayList<Book> bookList = new ArrayList<>();
 
     public Application() {
-        // Initialize with a sample book
-        this.bookList.add(new Book("Robin Hood", "Tom Cruise", "1"));
+            this.bookList.add(new Book("Robin Hood", "Tom Cruise", "A111"));
     }
 
-    // Main menu display function
     public void printMenu() {
         Scanner scanner = new Scanner(System.in);
         String menu =
@@ -31,8 +29,7 @@ public class Application {
         } while (!option.equals("5"));
     }
 
-    // Menu handler method that calls respective functions
-    private void handleMenuOption(String option) {
+    private void handleMenuOption(@org.jetbrains.annotations.NotNull String option) {
         switch (option) {
             case "1":
                 addBook();
@@ -55,7 +52,6 @@ public class Application {
         }
     }
 
-    // Method to add a book with validation
     private void addBook() {
         Scanner scanner = new Scanner(System.in);
         String title, author, isbn;
@@ -83,7 +79,6 @@ public class Application {
         } while (true);
     }
 
-    // Method to view all books
     private void viewBooks() {
         if (bookList.isEmpty()) {
             System.out.println("There are no books in the repository.");
@@ -94,17 +89,16 @@ public class Application {
         }
     }
 
-    // Placeholder method for deleting a book
     private void deleteBook() {
-        System.out.println("Option to delete a book is under development.");
+        System.out.println("Delete a book:");
+        Scanner scanner = new Scanner(System.in);
+        String optionISBN = scanner.nextLine();
     }
 
-    // Placeholder method for changing the repository
     private void changeRepository() {
-        System.out.println("Option to change repository is under development.");
+        System.out.println("Change Repository:");
     }
 
-    // Helper method to check for duplicate ISBNs
     private boolean isDuplicateISBN(String isbn) {
         for (Book book : bookList) {
             if (book.getISBN().equals(isbn)) {
@@ -116,9 +110,6 @@ public class Application {
 
     private static boolean isCorrectISBN(String isbn) {
         String pattern = "^([A-Z])(\\d{3})$";
-
         return Pattern.matches(pattern, isbn);
-
-
     }
 }
