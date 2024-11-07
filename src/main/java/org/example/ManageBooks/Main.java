@@ -1,8 +1,4 @@
-package org.example;
-
-import org.example.ManageBooks.Application;
-
-import java.util.Scanner;
+package org.example.ManageBooks;
 
 public class Main {
     public static void main(String[] args) {

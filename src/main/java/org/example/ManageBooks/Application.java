@@ -1,9 +1,8 @@
 package org.example.ManageBooks;
 
-import org.example.Book;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Application {
     private final ArrayList<Book> bookList = new ArrayList<>();
@@ -71,6 +70,8 @@ public class Application {
 
             if (title.isEmpty() || author.isEmpty() || isbn.isEmpty()) {
                 System.out.println("All fields are mandatory. Please try again.");
+            } else if (!isCorrectISBN(isbn)) {
+                System.out.println("This ISBN is not correct. Please insert an uppercase letter and three numbers");
             } else if (isDuplicateISBN(isbn)) {
                 System.out.println("This ISBN already exists. Please try again.");
             } else {
@@ -111,5 +112,13 @@ public class Application {
             }
         }
         return false;
+    }
+
+    private static boolean isCorrectISBN(String isbn) {
+        String pattern = "^([A-Z])(\\d{3})$";
+
+        return Pattern.matches(pattern, isbn);
+
+
     }
 }
