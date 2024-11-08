@@ -1,11 +1,12 @@
 package org.example.ManageBooks;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BookConsoleView {
+    private final Scanner scanner = new Scanner(System.in);
     //bookManager manage the logic of books (services)
     private final BookManager bookManager;
-
 
     //bookManager property's constructor
     public BookConsoleView(BookManager bookManager) {
@@ -13,7 +14,6 @@ public class BookConsoleView {
     }
 
     public void printMenu() {
-        Scanner scanner = new Scanner(System.in);
         String menu =
                 "1. Add book\n" +
                         "2. View all books\n" +
@@ -30,16 +30,16 @@ public class BookConsoleView {
         } while (!option.equals("5"));
     }
 
-    private void handleMenuOption(@org.jetbrains.annotations.NotNull String option) {
+    private void handleMenuOption(String option) {
         switch (option) {
             case "1":
-                bookManager.addBook();
+                this.menuAddBook();
                 break;
             case "2":
-                bookManager.viewBooks();
+                this.menuViewBooks();
                 break;
             case "3":
-                bookManager.deleteBook();
+                this.menuDeleteBook();
                 break;
             case "4":
                 bookManager.changeRepository();
@@ -51,17 +51,31 @@ public class BookConsoleView {
                 System.out.println("Invalid option. Please try again.");
                 break;
         }
-        //refactor para pasar a la consola los inputs
-        public void inputAddbook () {
-            System.out.print("Add Title (required): ");
-            title = scanner.nextLine().trim();
-            System.out.print("Add Author (required): ");
-            author = scanner.nextLine().trim();
-            System.out.print("Add ISBN (required): ");
-            isbn = scanner.nextLine().trim();
-        }
-
-
     }
+
+    private void menuViewBooks() {
+        ArrayList<Book> menuListBook = bookManager.getAllBooks();
+        for (Book book : menuListBook){
+            System.out.println(book);
+        }
+    }
+
+    public void menuAddBook() {
+        System.out.print("Add Title (required): ");
+        String title = scanner.nextLine().trim();
+        System.out.print("Add Author (required): ");
+        String author = scanner.nextLine().trim();
+        System.out.print("Add ISBN (required): ");
+        String isbn = scanner.nextLine().trim();
+        this.bookManager.addBook(title, author, isbn);
+    }
+
+    public void menuDeleteBook() {
+        System.out.println("Delete a book:");
+        String optionISBN = scanner.nextLine();
+        this.bookManager.deleteBook(optionISBN);
+    }
+
+
 }
 
