@@ -6,10 +6,12 @@ public class BookConsoleView {
     //bookManager manage the logic of books (services)
     private final BookManager bookManager;
 
+
     //bookManager property's constructor
     public BookConsoleView(BookManager bookManager) {
         this.bookManager = bookManager;
     }
+
     public void printMenu() {
         Scanner scanner = new Scanner(System.in);
         String menu =
@@ -49,6 +51,17 @@ public class BookConsoleView {
                 System.out.println("Invalid option. Please try again.");
                 break;
         }
-    }
+        //refactor para pasar a la consola los inputs
+        public void inputAddbook () {
+            System.out.print("Add Title (required): ");
+            title = scanner.nextLine().trim();
+            System.out.print("Add Author (required): ");
+            author = scanner.nextLine().trim();
+            System.out.print("Add ISBN (required): ");
+            isbn = scanner.nextLine().trim();
+        }
 
+
+    }
 }
+

@@ -1,7 +1,6 @@
 package org.example.ManageBooks;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class BookManager {
@@ -11,28 +10,14 @@ public class BookManager {
         Scanner scanner = new Scanner(System.in);
         String title, author, isbn;
 
-        do {
-            System.out.print("Add Title (required): ");
-            title = scanner.nextLine().trim();
-            System.out.print("Add Author (required): ");
-            author = scanner.nextLine().trim();
-            System.out.print("Add ISBN (required): ");
-            isbn = scanner.nextLine().trim();
+        Book book = new Book(title, author, isbn);
+        bookList.add(book);
+        System.out.println("The book has been added successfully!");
 
-            if (title.isEmpty() || author.isEmpty() || isbn.isEmpty()) {
-                System.out.println("All fields are mandatory. Please try again.");
-            } else if (!isCorrectISBN(isbn)) {
-                System.out.println("This ISBN is not correct. Please insert an uppercase letter and three numbers");
-            } else if (isDuplicateISBN(isbn)) {
-                System.out.println("This ISBN already exists. Please try again.");
-            } else {
-                Book book = new Book(title, author, isbn);
-                bookList.add(book);
-                System.out.println("The book has been added successfully!");
-                break;
-            }
-        } while (true);
     }
+
+
+
 
     public void viewBooks() {
         if (bookList.isEmpty()) {
