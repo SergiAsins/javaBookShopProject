@@ -7,7 +7,7 @@ import java.util.List;
 public class MySQLBookRepository {
 
     // findAll
-    public List<Book> findAll () {
+    public List<Book> findAll() {
         List<Book> bookList = new ArrayList<>();
         String sql = " SELECT * FROM books";
         try {
@@ -27,7 +27,7 @@ public class MySQLBookRepository {
         return bookList;
     }
 
-    public void saveBook(Book book){
+    public void saveBook(Book book) {
         try {
             String sql = "INSERT INTO libros (title, author, isbn) VALUES ('%s', '%s', '%s')".formatted(book.getTitle(), book.getAuthor(), book.getISBN());
             Connection connection = MySQLConnection.getConnection();
@@ -36,5 +36,18 @@ public class MySQLBookRepository {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+
+    }
+
+    public void deleteBook(String isbn) {
+        try {
+            String sql = "DELETE FROM libros WHERE isbn= '%s' ".formatted(isbn);
+            Connection connection = MySQLConnection.getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 }

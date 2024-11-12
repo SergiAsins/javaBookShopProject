@@ -12,7 +12,10 @@ public class Main {
 
         MySQLBookRepository mySQLBookRepository = new MySQLBookRepository();
         Book book = new Book("Shrek", "Author of Shrek", "A681");
-        mySQLBookRepository.saveBook(book);
+        Book book2 = new Book("Shrek", "Author of Shrek", "A682");
+
+       // mySQLBookRepository.saveBook(book);
+        mySQLBookRepository.deleteBook(book.getISBN());
     }
 }
 
