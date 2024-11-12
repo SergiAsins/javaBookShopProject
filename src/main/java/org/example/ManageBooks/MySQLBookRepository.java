@@ -6,7 +6,6 @@ import java.util.List;
 
 public class MySQLBookRepository {
 
-    // findAll
     public List<Book> findAll() {
         List<Book> bookList = new ArrayList<>();
         String sql = " SELECT * FROM books";
@@ -36,7 +35,6 @@ public class MySQLBookRepository {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
     }
 
     public void deleteBook(String isbn) {
@@ -48,6 +46,5 @@ public class MySQLBookRepository {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
     }
 }
