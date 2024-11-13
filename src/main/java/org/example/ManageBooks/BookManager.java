@@ -1,7 +1,10 @@
 package org.example.ManageBooks;
+
 import java.util.ArrayList;
 
 public class BookManager {
+    private BookRepository bookRepository = new InMemoryBookRepository();
+
     private final ArrayList<Book> bookList = new ArrayList<>();
 
     public void addBook(String title, String author, String ISBN) {
@@ -11,7 +14,7 @@ public class BookManager {
     }
 
     public ArrayList<Book> getAllBooks() {
-        return bookList;
+        return bookRepository.findAll();
 
         /*if (bookList.isEmpty()) {
             System.out.println("There are no books in the repository.");
@@ -22,7 +25,7 @@ public class BookManager {
         }*/
     }
 
-    public void deleteBook(String optionISBN){
+    public void deleteBookB(String optionISBN) {
         bookList.removeIf(book -> book.getISBN().equals(optionISBN));
     }
 

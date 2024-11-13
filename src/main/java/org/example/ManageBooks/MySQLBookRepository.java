@@ -3,8 +3,30 @@ package org.example.ManageBooks;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class MySQLBookRepository {
+public class MySQLBookRepository implements BookRepository{
+
+
+    @Override
+    public void save(Book book) {
+
+    }
+
+    @Override
+    public List<Book> findALL() {
+        return List.of();
+    }
+
+    @Override
+    public void deleteByIsbn(String isbn) {
+
+    }
+
+    @Override
+    public Optional<Book> findByIsbn(String isbn) {
+        return Optional.empty();
+    }
 
     public List<Book> findAll() {
         List<Book> bookList = new ArrayList<>();
