@@ -32,8 +32,24 @@ public class BookManager {
         System.out.println("Repository switched successfully.");
     }
 
+    //Data Book Guards:
+    public void guardBook(Book book) {
+        if (title.isEmpty() || author.isEmpty() || ISBN.isEmpty()) {
+            System.out.println("All fields are mandatory. Please try again.");
+        } else if (!isValidISBN(ISBN)) {
+            System.out.println("This ISBN is not correct. Please insert an uppercase letter and three numbers");
+        } else if (isDuplicateISBN(ISBN)) {
+            System.out.println("This ISBN already exists. Please try again.");
+        }
+    }
+
     private static boolean isValidISBN(String isbn) {
         String pattern = "^([A-Z])(\\d{3})$";
         return isbn.matches(pattern);
+    }
+
+    private boolean isDuplicateISBN(String isbn) {
+        Optional<Book> book = bookRepository.findByIsbn(isbn);
+        return book.isPresent();
     }
 }

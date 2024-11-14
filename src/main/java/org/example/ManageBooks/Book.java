@@ -17,16 +17,6 @@ public class Book {
         return author;
     }
 
-    /*public void guardBook() {
-        if (title.isEmpty() || author.isEmpty() || ISBN.isEmpty()) {
-            System.out.println("All fields are mandatory. Please try again.");
-        } else if (!isCorrectISBN(ISBN)) {
-            System.out.println("This ISBN is not correct. Please insert an uppercase letter and three numbers");
-        } else if (isDuplicateISBN(ISBN)) {
-            System.out.println("This ISBN already exists. Please try again.");
-        }
-    }*/
-
     public Book(String title, String author, String ISBN) {
         this.title = title;
         this.author = author;
@@ -41,12 +31,5 @@ public class Book {
                         ",\t ISBN ='" + this.ISBN + '\'';
     }
 
-    /*private boolean isDuplicateISBN(String isbn) {
-        for (Book book : bookList) {
-            if (book.getISBN().equals(isbn)) {
-                return true;
-            }
-        }
-        return false;
-    }*/
+
 }
