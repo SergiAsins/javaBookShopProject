@@ -10,12 +10,16 @@ _Book Manager_ es una aplicación de consola para gestionar un pequeño reposito
 - **Cambio de Repositorio**: Opción aún no implementada, reservada para futuras mejoras.
 
 ## 🖥️ Estructura del Proyecto
+![Image20241114154402.png](..%2F..%2F..%2F..%2F..%2F..%2FImage20241114154402.png)
 
 - `BookManager.java`: Clase principal que contiene la lógica de negocio para agregar, ver y eliminar libros.
 - `BookConsoleView.java`: Interfaz de consola que maneja el menú de opciones y la interacción con el usuario.
 - `Book.java`: Clase que modela el objeto **Libro** con atributos como título, autor e ISBN.
 - `Main.java`: Punto de entrada de la aplicación. Inicializa el programa y llama al menú principal.
-
+- `MySQLConnection`: Conexión de la base de datos.
+- `BookRepository`: interface que implementa el comportamiento de MySqlBookRepository y InMemoryBookRepository.
+- `InMemoryBookRepository`: Repositorio de libros en la memoria local que guarda los libros en una lista .
+- `MySQLBookRepository`:Repositorio de libros en MySQL .
 ## 🚀 Cómo Ejecutar el Proyecto
 
 1. **Clona el repositorio** en tu máquina.
