@@ -1,11 +1,30 @@
 package org.example.ManageBooks;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookManager {
-    private BookRepository bookRepository = new InMemoryBookRepository();
+    //attributes
+    private final ArrayList<Book> bookList = new ArrayList<Book>();
+    private BookRepository bookRepository = new MySQLBookRepository();
 
-    private final ArrayList<Book> bookList = new ArrayList<>();
+    //constructor
+    public BookManager() {
+    }
+
+    //methods
+            /* if (bookList.isEmpty()) {
+            System.out.println("There are no books in the repository.");
+        } else {
+            for (Book book : bookList) {
+                System.out.println(book);
+            }
+        }*/
+
+    private static boolean isValidISBN(String isbn) {
+        String pattern = "^([A-Z])(\\d{3})$";
+        return isbn.matches(pattern);
+    }
 
     public void addBook(String title, String author, String ISBN) {
         Book book = new Book(title, author, ISBN);
@@ -13,19 +32,11 @@ public class BookManager {
         System.out.println("The book has been added successfully!");
     }
 
-    public ArrayList<Book> getAllBooks() {
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
-
-        /*if (bookList.isEmpty()) {
-            System.out.println("There are no books in the repository.");
-        } else {
-            for (Book book : bookList) {
-                System.out.println(book);
-            }
-        }*/
     }
 
-    public void deleteBookB(String optionISBN) {
+    public void deleteBook(String optionISBN) {
         bookList.removeIf(book -> book.getISBN().equals(optionISBN));
     }
 

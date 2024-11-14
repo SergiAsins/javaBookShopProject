@@ -1,26 +1,22 @@
 package org.example.ManageBooks;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.ArrayList;
 
 public class MySQLBookRepository implements BookRepository{
 
-
     @Override
-    public void save(Book book) {
-
-    }
-
-    @Override
-    public List<Book> findALL() {
-        return List.of();
-    }
-
-    @Override
-    public void deleteByIsbn(String isbn) {
-
+    public void save(Book book) { //Create a Book in DB      //was 'save' before
+        try {
+            String sql = "INSERT INTO books (title, author, isbn) VALUES ('%s', '%s', '%s')".formatted(book.getTitle(), book.getAuthor(), book.getISBN());
+            Connection connection = MySQLConnection.getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
@@ -48,23 +44,14 @@ public class MySQLBookRepository implements BookRepository{
         return bookList;
     }
 
-    public void saveBook(Book book) {
+    @Override
+    public void deleteByIsbn(String isbn) {
         try {
-            String sql = "INSERT INTO libros (title, author, isbn) VALUES ('%s', '%s', '%s')".formatted(book.getTitle(), book.getAuthor(), book.getISBN());
+            String sql = "DELETE FROM books WHERE isbn= '%s' ".formatted(isbn);
             Connection connection = MySQLConnection.getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 
-    public void deleteBook(String isbn) {
-        try {
-            String sql = "DELETE FROM libros WHERE isbn= '%s' ".formatted(isbn);
-            Connection connection = MySQLConnection.getConnection();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

@@ -49,10 +49,4 @@ public class Book {
         }
         return false;
     }*/
-
-    /*private static boolean isCorrectISBN(String isbn) {
-        String pattern = "^([A-Z])(\\d{3})$";
-        return Pattern.matches(pattern, isbn);
-    }*/
-
 }

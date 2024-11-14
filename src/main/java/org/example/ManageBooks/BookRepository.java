@@ -1,17 +1,17 @@
 package org.example.ManageBooks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public interface BookRepository {
+    //CRUD
     void save(Book book);
 
-    List<Book> findALL();
-
-    void deleteByIsbn(String isbn);
+    List<Book> findAll();
 
     Optional<Book> findByIsbn(String isbn);
 
-    ArrayList<Book> findAll();
+    void deleteByIsbn(String isbn);
+
+
 }

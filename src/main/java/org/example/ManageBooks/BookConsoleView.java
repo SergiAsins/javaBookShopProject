@@ -1,6 +1,7 @@
 package org.example.ManageBooks;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BookConsoleView {
@@ -54,7 +55,7 @@ public class BookConsoleView {
     }
 
     private void menuViewBooks() {
-        ArrayList<Book> menuListBook = bookManager.getAllBooks();
+        List<Book> menuListBook = bookManager.getAllBooks();
         for (Book book : menuListBook){
             System.out.println(book);
         }

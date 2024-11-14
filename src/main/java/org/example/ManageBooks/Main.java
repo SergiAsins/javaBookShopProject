@@ -11,13 +11,13 @@ public class Main {
         //consoleView.printMenu();
 
         MySQLBookRepository mySQLBookRepository = new MySQLBookRepository();
-        //Book book = new Book("Shrek", "Author of Shrek", "A681");
+        Book book = new Book("Bad Days", "Cervantes", "A789");
         //Book book2 = new Book("Shrek", "Author of Shrek", "A682");
 
-       // mySQLBookRepository.saveBook(book);
+        mySQLBookRepository.save(book);
         // mySQLBookRepository.deleteBook(book.getISBN());
         mySQLBookRepository.findAll();
-        //System.out.println(mySQLBookRepository);
+        System.out.println(mySQLBookRepository);
     }
 }
 
