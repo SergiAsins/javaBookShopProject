@@ -14,7 +14,7 @@ public class InMemoryBookRepository implements BookRepository {
 
     @Override
     public List<Book> findAll() {
-        return new ArrayList<>(booksDb); // Return a copy of the list
+        return new ArrayList<>(booksDb);
     }
 
     @Override

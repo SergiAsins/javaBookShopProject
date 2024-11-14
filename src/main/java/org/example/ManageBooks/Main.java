@@ -5,12 +5,11 @@ public class Main {
         BookRepository inMemoryRepo = new InMemoryBookRepository();
         BookRepository mySQLRepo = new MySQLBookRepository();
 
-        BookManager bookManager = new BookManager(inMemoryRepo); // Start with in-memory repo
+        BookManager bookManager = new BookManager(inMemoryRepo);
         BookConsoleView consoleView = new BookConsoleView(bookManager);
 
-        consoleView.printMenu(); // Run application menu
+        consoleView.printMenu();
 
-        // To switch repository later, use:
         bookManager.changeRepository(mySQLRepo);
     }
 }
