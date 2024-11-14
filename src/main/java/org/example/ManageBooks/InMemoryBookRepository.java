@@ -1,26 +1,29 @@
 package org.example.ManageBooks;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class InMemoryBookRepository implements BookRepository {
-    //private static List<Book> db = new ArrayList<>();
+    private final List<Book> booksDb = new ArrayList<>();
 
     @Override
     public void save(Book book) {
+        booksDb.add(book);
     }
 
     @Override
     public List<Book> findAll() {
-        return List.of();
+        return new ArrayList<>(booksDb); // Return a copy of the list
     }
 
     @Override
     public Optional<Book> findByIsbn(String isbn) {
-        return Optional.empty();
+        return booksDb.stream().filter(book -> book.getISBN().equals(isbn)).findFirst();
     }
 
     @Override
-    public void deleteByIsbn(String isb) {
+    public void deleteByIsbn(String isbn) {
+        booksDb.removeIf(book -> book.getISBN().equals(isbn));
     }
 }

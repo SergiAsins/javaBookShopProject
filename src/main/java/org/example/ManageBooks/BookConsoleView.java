@@ -34,16 +34,19 @@ public class BookConsoleView {
     private void handleMenuOption(String option) {
         switch (option) {
             case "1":
-                this.menuAddBook();
+                menuAddBook();
                 break;
             case "2":
-                this.menuViewBooks();
+                menuViewBooks();
                 break;
             case "3":
-                this.menuDeleteBook();
+                menuDeleteBook();
                 break;
             case "4":
-                bookManager.changeRepository();
+                System.out.println("Select repository: 1 for MySQL, 2 for In-Memory");
+                String repoOption = scanner.nextLine();
+                BookRepository newRepo = repoOption.equals("1") ? new MySQLBookRepository() : new InMemoryBookRepository();
+                bookManager.changeRepository(newRepo);
                 break;
             case "5":
                 System.out.println("Exiting...");
@@ -53,6 +56,7 @@ public class BookConsoleView {
                 break;
         }
     }
+
 
     private void menuViewBooks() {
         List<Book> menuListBook = bookManager.getAllBooks();

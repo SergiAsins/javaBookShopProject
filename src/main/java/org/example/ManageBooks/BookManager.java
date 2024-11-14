@@ -1,46 +1,39 @@
 package org.example.ManageBooks;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookManager {
-    //attributes
-    private final ArrayList<Book> bookList = new ArrayList<Book>();
-    private BookRepository bookRepository = new MySQLBookRepository();
+    private BookRepository bookRepository;
 
-    //constructor
-    public BookManager() {
-    }
-
-    //methods
-            /* if (bookList.isEmpty()) {
-            System.out.println("There are no books in the repository.");
-        } else {
-            for (Book book : bookList) {
-                System.out.println(book);
-            }
-        }*/
-
-    private static boolean isValidISBN(String isbn) {
-        String pattern = "^([A-Z])(\\d{3})$";
-        return isbn.matches(pattern);
+    public BookManager(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     public void addBook(String title, String author, String ISBN) {
-        Book book = new Book(title, author, ISBN);
-        bookList.add(book);
-        System.out.println("The book has been added successfully!");
+        if (isValidISBN(ISBN)) {
+            Book book = new Book(title, author, ISBN);
+            bookRepository.save(book);
+            System.out.println("The book has been added successfully!");
+        } else {
+            System.out.println("Invalid ISBN format. Please try again.");
+        }
     }
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    public void deleteBook(String optionISBN) {
-        bookList.removeIf(book -> book.getISBN().equals(optionISBN));
+    public void deleteBook(String isbn) {
+        bookRepository.deleteByIsbn(isbn);
     }
 
-    public void changeRepository() {
-        System.out.println("Change Repository:");
+    public void changeRepository(BookRepository newRepository) {
+        this.bookRepository = newRepository;
+        System.out.println("Repository switched successfully.");
+    }
+
+    private static boolean isValidISBN(String isbn) {
+        String pattern = "^([A-Z])(\\d{3})$";
+        return isbn.matches(pattern);
     }
 }
