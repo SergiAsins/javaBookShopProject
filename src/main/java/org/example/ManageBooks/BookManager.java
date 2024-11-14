@@ -11,7 +11,7 @@ public class BookManager {
     }
 
     public void addBook(String title, String author, String ISBN) {
-        // Check all guards before proceeding
+        // Check all Guards before saving a Book
         if (isInvalidData(title, author, ISBN)) {
             System.out.println("All fields are mandatory. Please try again.");
         } else if (!isValidISBN(ISBN)) {
@@ -19,25 +19,21 @@ public class BookManager {
         } else if (isDuplicateISBN(ISBN)) {
             System.out.println("This ISBN already exists. Please use a unique ISBN.");
         } else {
-            // Data is valid; proceed to add book
             Book book = new Book(title, author, ISBN);
             bookRepository.save(book);
             System.out.println("The book has been added successfully!");
         }
     }
 
-    // Check that none of the fields are empty
     private boolean isInvalidData(String title, String author, String ISBN) {
         return title.isEmpty() || author.isEmpty() || ISBN.isEmpty();
     }
 
-    // Ensure ISBN format is correct
     private static boolean isValidISBN(String isbn) {
         String pattern = "^([A-Z])(\\d{3})$";
         return isbn.matches(pattern);
     }
 
-    // Check if ISBN already exists in the repository
     private boolean isDuplicateISBN(String isbn) {
         Optional<Book> book = bookRepository.findByIsbn(isbn);
         return book.isPresent();

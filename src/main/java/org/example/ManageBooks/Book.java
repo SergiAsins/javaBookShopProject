@@ -1,5 +1,4 @@
 package org.example.ManageBooks;
-import java.util.regex.Pattern;
 
 public class Book {
     private String ISBN;
@@ -22,14 +21,4 @@ public class Book {
         this.author = author;
         this.ISBN = ISBN;
     }
-
-    @Override
-    public String toString() {
-        return
-                "Title ='" + this.title + '\'' +
-                        ",\t author ='" + this.author + '\'' +
-                        ",\t ISBN ='" + this.ISBN + '\'';
-    }
-
-
 }
