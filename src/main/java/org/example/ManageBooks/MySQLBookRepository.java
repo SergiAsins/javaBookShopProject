@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class MySQLBookRepository implements BookRepository{
 
     @Override
-    public void save(Book book) { //Create a Book in DB      //was 'save' before
+    public void save(Book book) {
         try {
             String sql = "INSERT INTO books (title, author, isbn) VALUES ('%s', '%s', '%s')".formatted(book.getTitle(), book.getAuthor(), book.getISBN());
             Connection connection = MySQLConnection.getConnection();
-            Statement statement = connection.createStatement();
+            PreparedStatement statement = connection.prepareStatement(sql);
             statement.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -29,7 +29,7 @@ public class MySQLBookRepository implements BookRepository{
         String sql = " SELECT * FROM books";
         try {
             Connection connection = MySQLConnection.getConnection();
-            Statement statement = connection.createStatement();
+            PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet res = statement.executeQuery(sql);
             while (res.next()) {
                 String isbn = res.getString("isbn");
@@ -49,7 +49,7 @@ public class MySQLBookRepository implements BookRepository{
         try {
             String sql = "DELETE FROM books WHERE isbn= '%s' ".formatted(isbn);
             Connection connection = MySQLConnection.getConnection();
-            Statement statement = connection.createStatement();
+            PreparedStatement statement = connection.prepareStatement(sql);
             statement.executeUpdate(sql);
 
         } catch (SQLException ex) {
