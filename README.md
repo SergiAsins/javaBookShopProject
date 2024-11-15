@@ -21,7 +21,7 @@ Hemos utilizado una interface y hemos podido practicar la herencia y el polimorf
 - phpMyadmin
 
 ## 🖥️ Estructura del Proyecto
-![Image20241114154402.png](..%2F..%2F..%2F..%2F..%2F..%2FImage20241114154402.png)
+![Image20241114154402.png](Image20241114154402.png)
 
 - `BookManager.java`: Clase principal que contiene la lógica de negocio para agregar, ver y eliminar libros.
 - `BookConsoleView.java`: Interfaz de consola que maneja el menú de opciones y la interacción con el usuario.
