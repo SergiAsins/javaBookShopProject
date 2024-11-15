@@ -21,4 +21,14 @@ public class Book {
         this.author = author;
         this.ISBN = ISBN;
     }
+
+    //prints the Data of the Book properly
+    @Override
+    public String toString() {
+        return
+                "Title ='" + this.title + '\'' +
+                        ",\t author ='" + this.author + '\'' +
+                        ",\t ISBN ='" + this.ISBN + '\'';
+    }
+
 }
